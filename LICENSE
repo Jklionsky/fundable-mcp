@@ -1,0 +1,17 @@
+Copyright (c) 2026 Fundable
+
+This repository contains documentation and an MCP manifest for the Fundable MCP
+server only. It does NOT contain the server's source code.
+
+The documentation and manifest in this repository may be freely read, referenced,
+and shared for the purpose of discovering and connecting to the hosted Fundable MCP
+server.
+
+The Fundable MCP server, its source code, the underlying venture-capital dataset,
+and all related data and business logic are proprietary and confidential. They are
+NOT licensed for use, reproduction, or distribution by this repository. Access to
+the hosted service requires an active Fundable subscription and is governed by the
+Fundable Terms of Service at https://tryfundable.ai.
+
+THE DOCUMENTATION IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED.

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.json",
+  "name": "io.github.Jklionsky/fundable",
+  "description": "Query Fundable's proprietary venture-capital dataset — funding rounds, investors, valuations, founders and firms — in natural language.",
+  "version": "1.0.0",
+  "websiteUrl": "https://tryfundable.ai",
+  "repository": {
+    "url": "https://github.com/Jklionsky/fundable-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://fundable-mcp.jacob-57a.workers.dev/mcp"
+    }
+  ]
+}

@@ -7,8 +7,8 @@ between them — directly from Claude or any MCP-compatible client.
 This is a **remote, hosted MCP server**. There's nothing to install or run locally; you connect
 to the hosted endpoint and authenticate with your Fundable account.
 
-- **Endpoint:** `https://fundable-mcp.jacob-57a.workers.dev/mcp`
-- **Transport:** Streamable HTTP (SSE also available at `/sse`)
+- **Endpoint:** `https://mcp.tryfundable.ai/`
+- **Transport:** Streamable HTTP (the explicit `/mcp` path remains available for compatibility)
 - **Auth:** OAuth 2.1 (sign in with your Fundable account) — **requires an active Fundable
   subscription**. Don't have one? [Sign up at tryfundable.ai](https://tryfundable.ai).
 
@@ -22,14 +22,21 @@ to the hosted endpoint and authenticate with your Fundable account.
 | `listDatasetTables` | Quick overview of the available tables. |
 | `getQueryExamples` | Example queries by category (funding, investors, people, industries, geography, and more). |
 | `getTableDetails` | Column names, types, and constraints for a specific table. |
-| `queryVCData` | Runs a read-only query against the dataset and returns the rows. |
+| `queryVCData` | Runs a read-only query and returns a free inline preview of up to 20 rows. |
+| `exportData` | Exports up to 1,000 rows as a credit-metered CSV after explicit approval. Clerk OAuth only. |
+| `unlockPersonEmail` | Unlocks one verified person email after explicit approval. Clerk OAuth only. |
+| `unlockPersonEmails` | Unlocks an explicitly approved batch of 1–20 verified person emails with a hard credit ceiling. Clerk OAuth only. |
+
+Authorized API-key sessions receive the five dataset and query tools. Authorized Clerk OAuth
+sessions also receive the export and email-unlock tools. Users without dataset access receive
+only `requestAccess`.
 
 ## Connect
 
 ### claude.ai (web / desktop)
 
 1. Go to **Settings → Connectors → Add custom connector**.
-2. Enter the URL: `https://fundable-mcp.jacob-57a.workers.dev/mcp`
+2. Enter the URL: `https://mcp.tryfundable.ai/`
 3. Complete the sign-in prompt with your Fundable account.
 
 ### Claude Desktop (config file)
@@ -41,7 +48,7 @@ Add to your `claude_desktop_config.json`:
   "mcpServers": {
     "fundable": {
       "command": "npx",
-      "args": ["mcp-remote", "https://fundable-mcp.jacob-57a.workers.dev/mcp"]
+      "args": ["mcp-remote", "https://mcp.tryfundable.ai/"]
     }
   }
 }

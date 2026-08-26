@@ -11,7 +11,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://fundable-mcp.jacob-57a.workers.dev/mcp"
+      "url": "https://mcp.tryfundable.ai/"
     }
   ]
 }

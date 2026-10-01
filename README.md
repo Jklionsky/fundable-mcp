@@ -22,14 +22,24 @@ to the hosted endpoint and authenticate with your Fundable account.
 | `listDatasetTables` | Quick overview of the available tables. |
 | `getQueryExamples` | Example queries by category (funding, investors, people, industries, geography, and more). |
 | `getTableDetails` | Column names, types, and constraints for a specific table. |
-| `queryVCData` | Runs a read-only query and returns a free inline preview of up to 20 rows. |
-| `exportData` | Exports up to 1,000 rows as a credit-metered CSV after explicit approval. Clerk OAuth only. |
+| `previewData` | Runs a read-only query and returns a free inline preview of up to 15 rows. |
+| `exportData` | Exports up to 1,000 rows as a credit-metered CSV after explicit file intent and approval of a credit ceiling. Clerk OAuth only. |
 | `unlockPersonEmail` | Unlocks one verified person email after explicit approval. Clerk OAuth only. |
 | `unlockPersonEmails` | Unlocks an explicitly approved batch of 1–20 verified person emails with a hard credit ceiling. Clerk OAuth only. |
+| `unlockPersonPhone` | Unlocks one verified person phone number after explicit approval. Clerk OAuth only. |
+| `unlockPersonPhones` | Unlocks an explicitly approved batch of 1–20 verified person phone numbers with a hard credit ceiling. Clerk OAuth only. |
 
-Authorized API-key sessions receive the five dataset and query tools. Authorized Clerk OAuth
-sessions also receive the export and email-unlock tools. Users without dataset access receive
+Authorized API-key sessions receive the dataset and preview tools. Authorized Clerk OAuth
+sessions also receive the export and contact-unlock tools. Users without dataset access receive
 only `requestAccess`.
+
+## Credit-consuming actions
+
+- **CSV exports:** One credit per row actually exported. The caller must set `maxCredits` from a ceiling the user approved; if the result exceeds it, the export is rejected without a charge. The limit is 1,000 rows. An identical SQL retry within 15 minutes recovers the same export without a second charge.
+- **Single email or phone unlock:** A newly unlocked contact costs five credits; a repeat of that same contact type for the same account costs zero. Email and phone are separate unlocks, so unlocking both for one person can cost ten credits. Ask for approval before a paid unlock.
+- **Batch email or phone unlock:** Each call covers 1–20 named people and requires approval of the exact people and a `maxCredits` ceiling. Each new contact costs five credits, up to the approved ceiling; repeats, misses, unavailable results, duplicates, and invalid identifiers cost zero. Do not break a batch into single unlocks to bypass its ceiling.
+
+Before confirming any of these actions, show the user what will be exported or whose contact details will be unlocked, the unit cost, and the maximum credits that can be charged. Report the actual credits used afterward.
 
 ## Connect
 

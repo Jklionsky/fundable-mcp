@@ -54,6 +54,8 @@ Before confirming any of these actions, show the user what will be exported or w
 
 [Purchase more credits at $0.06 each](https://www.tryfundable.ai/credits).
 
+Pro is $100/month with 2,000 monthly credits, the web app, deal alerts, and integrations. That is $0.05 per included credit; additional purchased credits cost $0.06 each.
+
 ## Connect
 
 ### claude.ai (web / desktop)
